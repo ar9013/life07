@@ -21,6 +21,8 @@ public class Life07 extends ApplicationAdapter {
 	FreeTypeFontGenerator generator;
 	FreeTypeFontGenerator.FreeTypeFontParameter parameter;
 
+
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
@@ -30,9 +32,10 @@ public class Life07 extends ApplicationAdapter {
 		generator = new FreeTypeFontGenerator(fontFile);
 
 		parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-		parameter.size = 16; // 設定字體大小
+		parameter.size = 24; // 設定字體大小
 
 		font = generator.generateFont(parameter);
+
 		generator.dispose();
 
 		font.setColor(0.5f, 0.0f, 1.0f, 1); // 設定字體顏色
@@ -49,7 +52,8 @@ public class Life07 extends ApplicationAdapter {
 
 		batch.begin();
 		batch.draw(img, 0, 0);
-		font.draw(batch,"FPS:"+Gdx.graphics.getFramesPerSecond(),0,Gdx.graphics.getHeight()-10);
+		font.draw(batch,"FPS:"+Gdx.graphics.getFramesPerSecond(),0,Gdx.graphics.getHeight());
+
 		batch.end();
 	}
 	
