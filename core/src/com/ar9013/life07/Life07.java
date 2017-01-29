@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import sun.font.TrueTypeFont;
 import sun.rmi.runtime.Log;
 
 public class Life07 extends ApplicationAdapter {
@@ -28,7 +29,7 @@ public class Life07 extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
 
-		FileHandle fontFile = Gdx.files.internal("font/myfont.ttf");
+		FileHandle fontFile = Gdx.files.internal("font/yahei_consolas13.ttf");
 		generator = new FreeTypeFontGenerator(fontFile);
 
 		parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
@@ -40,8 +41,10 @@ public class Life07 extends ApplicationAdapter {
 
 		font.setColor(0.5f, 0.0f, 1.0f, 1); // 設定字體顏色
 
+
 		Gdx.app.log(TAG, "mBitmapFont.getScaleX() : "+font.getScaleX() +
 				", mBitmapFont.getScaleY() " +font.getScaleY());
+
 	}
 
 	@Override
@@ -52,7 +55,7 @@ public class Life07 extends ApplicationAdapter {
 
 		batch.begin();
 		batch.draw(img, 0, 0);
-		font.draw(batch,"FPS:"+Gdx.graphics.getFramesPerSecond(),0,Gdx.graphics.getHeight());
+		font.draw(batch," FPS:"+Gdx.graphics.getFramesPerSecond(),0,Gdx.graphics.getHeight());
 
 		batch.end();
 	}
@@ -62,5 +65,6 @@ public class Life07 extends ApplicationAdapter {
 		batch.dispose();
 		img.dispose();
 		font.dispose();
+
 	}
 }
