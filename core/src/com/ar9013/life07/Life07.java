@@ -22,6 +22,11 @@ public class Life07 extends ApplicationAdapter {
 	FreeTypeFontGenerator generator;
 	FreeTypeFontGenerator.FreeTypeFontParameter parameter;
 
+	BitmapFont font_ch;
+	FreeTypeFontGenerator generator_ch;
+	FreeTypeFontGenerator.FreeTypeFontParameter parameter_ch;
+
+	String strShowText = "Brad 新年快樂 ！！ 奪得先雞"; // 造字檔
 
 
 	@Override
@@ -45,6 +50,14 @@ public class Life07 extends ApplicationAdapter {
 		Gdx.app.log(TAG, "mBitmapFont.getScaleX() : "+font.getScaleX() +
 				", mBitmapFont.getScaleY() " +font.getScaleY());
 
+		// 其他寫法
+		generator_ch = new FreeTypeFontGenerator(Gdx.files.internal("font/noto_sans_cjk_tc_reqular.otf"));
+		parameter_ch = new FreeTypeFontGenerator.FreeTypeFontParameter();
+		parameter_ch.size=24;
+		parameter_ch.characters = strShowText;
+		font_ch = generator_ch.generateFont(parameter_ch);
+		generator_ch.dispose();
+
 	}
 
 	@Override
@@ -56,7 +69,7 @@ public class Life07 extends ApplicationAdapter {
 		batch.begin();
 		batch.draw(img, 0, 0);
 		font.draw(batch," FPS:"+Gdx.graphics.getFramesPerSecond(),0,Gdx.graphics.getHeight());
-
+		font_ch.draw(batch,"奪得 ！！ 先雞 \nBrad ！ 新年快樂 !", 0, Gdx.graphics.getHeight()-font.getLineHeight()); // 顯示在 FPS 字串的下方
 		batch.end();
 	}
 	
@@ -65,6 +78,6 @@ public class Life07 extends ApplicationAdapter {
 		batch.dispose();
 		img.dispose();
 		font.dispose();
-
+		generator_ch.dispose();
 	}
 }
